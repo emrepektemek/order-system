@@ -1,4 +1,4 @@
-export interface ResponseModel {
-  success: boolean;
-  message: string;
+export abstract class ResponseModel {
+  success: boolean = false;
+  message: string = '';
 }

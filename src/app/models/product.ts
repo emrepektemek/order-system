@@ -1,4 +1,4 @@
-import { AuditBaseEntity } from './AuditBaseEntity';
+import { AuditBaseEntity } from './auditBaseEntity';
 
 export class Product extends AuditBaseEntity {
   categoryId: number = 0;

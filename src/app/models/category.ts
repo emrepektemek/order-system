@@ -1,4 +1,4 @@
-import { AuditBaseEntity } from './AuditBaseEntity';
+import { AuditBaseEntity } from './auditBaseEntity';
 
 export class Category extends AuditBaseEntity {
   categoryName: string = '';

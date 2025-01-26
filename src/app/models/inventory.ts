@@ -1,4 +1,4 @@
-import { AuditBaseEntity } from './AuditBaseEntity';
+import { AuditBaseEntity } from './auditBaseEntity';
 
 export class Inventory extends AuditBaseEntity {
   warehouseId: number = 0;

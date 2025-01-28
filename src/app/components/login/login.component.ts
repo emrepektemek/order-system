@@ -11,10 +11,11 @@ import {
 import { AuthService } from './../../services/auth.service';
 
 import { ToastrService } from 'ngx-toastr';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -45,6 +47,7 @@ export class LoginComponent implements OnInit {
         (response) => {
           this.toastrService.info(response.message);
           localStorage.setItem('token', response.data.token);
+          this.router.navigate(['/home']);
         },
         (responseError) => {
           this.toastrService.error(responseError.error);

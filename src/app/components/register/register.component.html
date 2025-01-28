@@ -89,9 +89,9 @@
                 {{ selectedGender || "Select Gender" }}
             </button>
             <ul class="dropdown-menu" aria-labelledby="genderDropdown">
-                <li><a class="dropdown-item" href="#" (click)="selectGender('Male')">Male</a></li>
-                <li><a class="dropdown-item" href="#" (click)="selectGender('Female')">Female</a></li>
-                <li><a class="dropdown-item" href="#" (click)="selectGender('Other')">Other</a></li>
+                <li><a class="dropdown-item"  (click)="selectGender('Male')">Male</a></li>
+                <li><a class="dropdown-item"  (click)="selectGender('Female')">Female</a></li>
+                <li><a class="dropdown-item" (click)="selectGender('Other')">Other</a></li>
                 <li><a class="dropdown-item text-muted"  (click)="selectGender('')">Clear Selection</a></li> 
             </ul>
         </div>

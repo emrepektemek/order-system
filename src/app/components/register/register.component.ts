@@ -12,11 +12,11 @@ import { AuthService } from '../../services/auth.service';
 
 import { ToastrService } from 'ngx-toastr';
 
-import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
@@ -28,7 +28,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -56,12 +57,17 @@ export class RegisterComponent implements OnInit {
     this.authService.register(registerModel).subscribe(
       (response) => {
         this.toastrService.info(response.message);
-        console.log(response);
+
+        this.router.navigate(['/login']);
       },
       (responseError) => {
-        this.toastrService.error(
-          responseError.error.ValidationErrors[0].ErrorMessage
-        );
+        if (responseError.error.ValidationErrors) {
+          this.toastrService.error(
+            responseError.error.ValidationErrors[0].ErrorMessage
+          );
+        } else {
+          this.toastrService.error(responseError.error);
+        }
       }
     );
   }

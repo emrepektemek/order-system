@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+.toast-info  {
+    background-color: rgb(123, 0, 232);
+    color: #ffffff !important;
+}
+
+.toast-error  {
+    background-color: rgb(232, 0, 0);
+    color: #ffffff !important;
+}

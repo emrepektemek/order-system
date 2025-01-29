@@ -6,9 +6,11 @@ import { ToastrService } from 'ngx-toastr';
 import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-home',
-  imports: [HeaderComponent, SidebarComponent],
+  imports: [HeaderComponent, SidebarComponent, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

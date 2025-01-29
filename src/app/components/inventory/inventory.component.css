@@ -1,0 +1,36 @@
+table {
+    width: 100%;
+    table-layout: fixed; 
+}
+
+.table tbody {
+  background-color: #f8f9fa !important; /* Gövde arka planı için açık renk */
+}
+
+th , td{
+  color: black;
+} 
+
+.table td, .table th {
+  background-color: #ffffff; /* Normal hücre rengi */
+}
+
+.custom-table th, .custom-table td {
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  padding: 12px;
+  text-align: center;
+}
+
+/* Başlık satırını daha belirgin hale getir */
+.custom-table thead th {
+  background-color: rgb(123, 0, 232) !important;
+  color: white;
+}
+
+
+.table tbody tr:hover td, 
+.table tbody tr:hover {
+  background-color: rgba(254, 254, 254, 0.934) !important;
+  transform: scale(1.05); 
+  transition: transform 0.3s ease-in-out; 
+}

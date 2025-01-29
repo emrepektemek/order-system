@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
+
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
-import { HeaderComponent } from '../header/header.component';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-
 @Component({
-  selector: 'app-home',
-  imports: [HeaderComponent, SidebarComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  selector: 'app-header',
+  imports: [],
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.css',
 })
-export class HomeComponent {
+export class HeaderComponent {
   constructor(
     private authService: AuthService,
     private toastrService: ToastrService,

@@ -2,23 +2,15 @@
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary sidebar-container ">
        
         <ul class="nav nav-pills flex-column mb-auto">
-          <li class="nav-item">
-            <a  class="nav-link active" aria-current="page" [routerLink]="['/home']">
-              
-              Home
-            </a>
-          </li> 
           <li>
-            <a class="nav-link link-body-emphasis" [routerLink]="['/home/inventory']" >
-
-                Depo Rapor Ekranı
+            <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/inventory']" routerLinkActive="active"  >
+                Inventory Report Screen
             </a>
           </li>
 
           <li>
-            <a class="nav-link link-body-emphasis" [routerLink]="['/home/order']">
-             
-                Sipariş Rapor Ekranı
+            <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/order']" routerLinkActive="active" >
+              Order Report Screen
             </a>
           </li>
         </ul>

@@ -1,31 +1,41 @@
+<div *ngIf="dataLoaded == false" class="d-flex justify-content-center align-items-center">
+  <div class="spinner-border custom-spinner" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
 <div class="container">
-    <h2 class="text-center mb-4">Ürün Listesi</h2>
-    <table class="table table-hover table-active custom-table ">
+    
+    <table class="table table-hover table-light custom-table ">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-          <th scope="col">İşlemler</th>
+          <th scope="col"></th>
+          <th scope="col">Customer Name</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Customer Address</th>
+          <th scope="col">Customer PhoneNumber</th>
+          <th scope="col">Customer Email</th>
+          <th scope="col">Order Date</th>
+          <th scope="col">Ship Date</th>
+          <th scope="col">Status</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>mdo</td>
+        <tr *ngFor="let orderReport of orderReports">
+          <th scope="row">{{ orderReport.orderId }}</th>
+          <td>{{ orderReport.customerName }}</td>
+          <td>{{ orderReport.productName }}</td>
+          <td>{{ orderReport.customerAddress }}</td>
+          <td>{{ orderReport.customerPhoneNumber }}</td>
+          <td>{{ orderReport.customerEmail }}</td>
+          <td>{{ orderReport.orderDate }}</td>
+          <td>{{ orderReport.shipDate }}</td>
+          <td>{{ orderReport.orderStatus }}</td>
           <td class="action-buttons">
             <i class="fa fa-pencil-alt text-warning fa-lg mx-4" ></i>
             <i class="fa fa-trash text-danger fa-lg mx-3"></i>
           </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>fat</td>
         </tr>
       </tbody>
     </table>

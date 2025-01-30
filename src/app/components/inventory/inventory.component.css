@@ -4,7 +4,7 @@ table {
 }
 
 .table tbody {
-  background-color: #f8f9fa !important; /* Gövde arka planı için açık renk */
+  background-color: #f8f9fa !important; 
 }
 
 th , td{
@@ -12,7 +12,7 @@ th , td{
 } 
 
 .table td, .table th {
-  background-color: #ffffff; /* Normal hücre rengi */
+  background-color: #ffffff; 
 }
 
 .custom-table th, .custom-table td {
@@ -21,16 +21,20 @@ th , td{
   text-align: center;
 }
 
-/* Başlık satırını daha belirgin hale getir */
 .custom-table thead th {
   background-color: rgb(123, 0, 232) !important;
   color: white;
 }
 
-
-.table tbody tr:hover td, 
-.table tbody tr:hover {
+.table tbody tr:hover, 
+.table tbody td:hover {
   background-color: rgba(254, 254, 254, 0.934) !important;
   transform: scale(1.05); 
   transition: transform 0.3s ease-in-out; 
+}
+
+.custom-spinner {
+  border-top-color: rgb(123, 0, 232);
+  border-right-color: rgb(123, 0, 232);
+  border-left-color: rgb(123, 0, 232);
 }

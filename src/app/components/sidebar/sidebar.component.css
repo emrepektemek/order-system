@@ -10,7 +10,7 @@
   .sidebar-container{
     width: 270px;
     background-color: rgb(123, 0, 232)!important;
-    height: 95%; 
+    height: 97%; 
     width: 280px; 
     border-radius: 15px; 
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); 
@@ -93,4 +93,8 @@
 .nav-pills .nav-link:hover {
     background-color: rgb(81, 2, 151)!important;
     transform: scale(1.05);
+}
+
+.custom-link {
+  font-size: 15px; 
 }

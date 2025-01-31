@@ -17,7 +17,7 @@ th , td{
 
 .custom-table th, .custom-table td {
   border: 1px solid rgba(255, 255, 255, 0.5) !important;
-  padding: 12px;
+  padding: 16px;
   text-align: center;
   font-size: 14px;
 }
@@ -28,7 +28,7 @@ th , td{
 }
 
 .table tbody tr:hover, 
-.table tbody td:hover {
+.table tbody tr:hover {
   background-color: rgba(254, 254, 254, 0.934) !important;
   transform: scale(1.05); 
   transition: transform 0.3s ease-in-out; 
@@ -38,4 +38,20 @@ th , td{
   border-top-color: rgb(123, 0, 232);
   border-right-color: rgb(123, 0, 232);
   border-left-color: rgb(123, 0, 232);
+}
+
+.custom-td{
+  max-width: 150px; 
+  overflow: hidden; 
+  white-space: nowrap;
+}
+
+.custom-icon-success {
+  color: #0bdb3c;
+  font-size: 9px;
+}
+
+.custom-icon-danger {
+  color: #ff0c24;
+  font-size: 9px;
 }

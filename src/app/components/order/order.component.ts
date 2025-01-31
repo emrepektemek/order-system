@@ -23,7 +23,6 @@ export class OrderComponent implements OnInit {
   getReports() {
     this.orderService.getReports().subscribe((response) => {
       this.orderReports = response.data;
-      console.log(response.data);
       this.dataLoaded = true;
     });
   }

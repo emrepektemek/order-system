@@ -1,4 +1,4 @@
-export abstract class OrderReportModel {
+export class OrderReportModel {
   orderId: number = 0;
 
   customerName: string = '';

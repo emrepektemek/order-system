@@ -1,4 +1,4 @@
-export abstract class InventoryReportModel {
+export class InventoryReportModel {
   inventoryId: number = 0;
 
   warehouseName: string = '';

@@ -8,7 +8,7 @@
     
     <table class="table table-hover table-light custom-table ">
       <thead>
-        <tr>
+        <tr class="align-middle">
           <th scope="col"></th>
           <th scope="col">Warehouse Name</th>
           <th scope="col">Warehouse Location</th>
@@ -18,13 +18,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let inventoryReport of inventoryReports">
-          <th scope="row">{{ inventoryReport.inventoryId }}</th>
+        <tr class="align-middle" *ngFor="let inventoryReport of inventoryReports">
+          <th  scope="row">{{ inventoryReport.inventoryId }}</th>
           <td>{{ inventoryReport.warehouseName }}</td>
           <td>{{ inventoryReport.warehouseLocation }}</td>
           <td>{{ inventoryReport.productName }}</td>
           <td>{{ inventoryReport.stockQuantity }}</td>
-          <td class="action-buttons">
+          <td>  
             <i class="fa fa-pencil-alt text-warning fa-lg mx-4" ></i>
             <i class="fa fa-trash text-danger fa-lg mx-3"></i>
           </td>

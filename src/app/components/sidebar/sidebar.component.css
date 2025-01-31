@@ -79,6 +79,7 @@
     border-radius: 10px; 
     transition: all 0.3s ease-in-out; 
     z-index: 2;
+    font-weight: bold;
     
 }
 
@@ -87,7 +88,6 @@
     color: white !important; 
     box-shadow: inset 3px 3px 10px rgba(0, 0, 0, 0.2);
     font-weight: bold;
-    
 }
 
 .nav-pills .nav-link:hover {

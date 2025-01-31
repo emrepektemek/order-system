@@ -1,20 +1,50 @@
 <main class="d-flex flex-nowrap">
-    <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary sidebar-container ">
-       
-        <ul class="nav nav-pills flex-column mb-auto">
-          <li>
-            <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/inventory']" routerLinkActive="active"  >
-                Inventory Report Screen
-            </a>
-          </li>
+  <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary sidebar-container ">
+      <ul class="nav nav-pills flex-column mb-auto">
+        
+        <li>
+          <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/user-create']" routerLinkActive="active" >
+            Create User
+          </a>
+        </li>
 
-          <li>
-            <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/order']" routerLinkActive="active" >
-              Order Report Screen
-            </a>
-          </li>
-        </ul>
-     
-      </div>
+        <li>
+          <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/user-role-assignment']" routerLinkActive="active" >
+            User Role Assignment
+          </a>
+        </li>
 
+        <li>
+          <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/customer-assignment']" routerLinkActive="active" >
+            Customer Assignment
+          </a>
+        </li>
+
+
+        <li>
+          <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/product-assignment']" routerLinkActive="active"  >
+              Product Assignment
+          </a>
+        </li>
+
+
+        <li>
+          <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/order-assignment']" routerLinkActive="active"  >
+            Order Assignment
+          </a>
+        </li>
+
+        <li>
+          <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/inventory']" routerLinkActive="active"  >
+              Inventory Report Screen
+          </a>
+        </li>
+
+        <li>
+          <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/order']" routerLinkActive="active" >
+            Order Report Screen
+          </a>
+        </li>
+      </ul>
+    </div>
 </main>

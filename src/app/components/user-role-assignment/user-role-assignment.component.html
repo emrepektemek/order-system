@@ -15,22 +15,58 @@
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Phone Number</th>
-            <th scope="col"></th>
+            <th scope="col">Assign a Role</th>
           </tr>
         </thead>    
         <tbody>
           <tr class="align-middle" *ngFor="let userOperationAssignment of userOperationAssignments">
             <td class="fw-bold">{{ userOperationAssignment.userId }}</td>
-            <td>{{ userOperationAssignment.operationClaimName }}</td>
+            <td>{{ userOperationAssignment.operationClaimName || 'not assigned' }}</td>
             <td class="custom-td">{{ userOperationAssignment.email }}</td>
             <td>{{ userOperationAssignment.firstName }}</td>
             <td>{{ userOperationAssignment.lastName }}</td>
             <td class="custom-td">{{ userOperationAssignment.phoneNumber }}</td>
             <td>  
-                <i class="fa fa-pencil-alt text-warning fa-lg mx-3" ></i>
-                <i class="fa fa-trash text-danger fa-lg mx-3"></i>
+                <i class="fa fa-pencil-alt custom-icon-edit fa-lg mx-3" (click)="openModal(userOperationAssignment.userId)"></i>
+                <i class="fa fa-trash custom-icon-delete fa-lg mx-3"></i>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="custom-h4" >Select Role</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          
+          <div class="modal-body">
+            
+            <div class="custom-dropdown-container">
+              <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle custom-dropdown-btn" type="button" id="genderDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ getRoleName(selectedRole) }}
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="genderDropdown">
+                      <li><a class="dropdown-item"  (click)="selectRole(2)">admin</a></li>
+                      <li><a class="dropdown-item"  (click)="selectRole(4)">user</a></li>
+                      <li><a class="dropdown-item" (click)="selectRole(5)">customer.representative</a></li>
+                      <li><a class="dropdown-item text-muted"  (click)="selectRole(0)">Clear Role</a></li> 
+                  </ul>
+              </div>
+            </div>
+
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary custom-btn" (click)="saveRole()" >Save Role</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+ 

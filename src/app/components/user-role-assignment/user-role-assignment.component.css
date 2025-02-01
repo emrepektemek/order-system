@@ -46,12 +46,70 @@ th , td{
   white-space: nowrap;
 }
 
-.custom-icon-success {
-  color: #0bdb3c;
-  font-size: 9px;
+.custom-icon-edit {
+  color: rgb(123, 0, 232);
+  font-size: 16px;
 }
 
-.custom-icon-danger {
+.custom-icon-delete {
   color: #ff0c24;
-  font-size: 9px;
+  font-size: 14px;
 }
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 20px; 
+}
+
+.custom-btn {
+  width: 30%; 
+  background-color: rgb(123, 0, 232); 
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+}
+
+.custom-btn:active {
+ background-color: white;
+ color: black;
+}
+
+.custom-h4{
+  text-align: center;
+  color: black;
+  padding: 12px;
+  font-size: 19px;
+  margin-top: -10px;
+}
+
+.modal-header, .modal-footer {
+  border: none;
+  position: relative; /* Butonun konumunu modal-header'a göre ayarlıyoruz */
+}
+
+.btn-close {
+  position: absolute;
+  top: 20px; 
+  right: 20px;
+}
+
+
+.custom-dropdown-container {
+  display: flex;
+  justify-content: center;  
+  padding-bottom: 10px;
+}
+
+.custom-dropdown-btn {
+  background-color: rgb(123, 0, 232); 
+}
+
+.dropdown-item:active, 
+.dropdown-item:focus {
+  background-color: rgb(123, 0, 232); 
+}
+
+
+

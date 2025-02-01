@@ -52,6 +52,11 @@
   background-color: rgb(123, 0, 232); 
 }
 
+.dropdown-item:active, 
+.dropdown-item:focus {
+  background-color: rgb(123, 0, 232); 
+}
+
 .custom-btn-container {
   display: flex;
   justify-content: center;  

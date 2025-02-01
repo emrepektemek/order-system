@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ResponseSingleDataModel } from '../models/responseSingleDataModel';
 import { TokenModel } from '../models/tokenModel';
 import { RegisterModel } from '../models/registerModel';
+import { IdTokenModel } from '../models/idTokenModel';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,7 @@ export class AuthService {
   }
 
   register(registerModel: RegisterModel) {
-    return this.httpClient.post<ResponseSingleDataModel<TokenModel>>(
+    return this.httpClient.post<ResponseSingleDataModel<IdTokenModel>>(
       this.apiUrl + 'register',
       registerModel
     );

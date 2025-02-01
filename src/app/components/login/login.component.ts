@@ -53,6 +53,8 @@ export class LoginComponent implements OnInit {
           this.toastrService.error(responseError.error);
         }
       );
+    } else {
+      this.toastrService.error('Please enter a password');
     }
   }
 }

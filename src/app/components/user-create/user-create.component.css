@@ -12,8 +12,8 @@
     text-align: center;
     background-color: rgb(123, 0, 232); 
     color: white;
-    padding: 16px;
-    font-size: 20px;
+    padding: 12px;
+    font-size: 17px;
 }
 
 .custom-form-container {
@@ -59,11 +59,16 @@
   background-color: rgb(123, 0, 232); 
 }
 
+.dropdown-item:active, 
+.dropdown-item:focus {
+  background-color: rgb(123, 0, 232); 
+}
+
+
 .custom-btn-container {
   display: flex;
   justify-content: center;  
 }
-
 
 .custom-btn {
   width: 300px; 

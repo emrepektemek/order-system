@@ -56,12 +56,18 @@ th , td{
   font-size: 14px;
 }
 
+.modal-content {
+  padding-bottom: 20px; 
+}
+
+
 .modal-footer {
   display: flex;
   justify-content: center;
   width: 100%;
   gap: 20px; 
 }
+
 
 .custom-btn {
   width: 30%; 
@@ -104,12 +110,23 @@ th , td{
 
 .custom-dropdown-btn {
   background-color: rgb(123, 0, 232); 
+  width: 210px;
+  margin-top: -20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
 }
 
 .dropdown-item:active, 
 .dropdown-item:focus {
   background-color: rgb(123, 0, 232); 
 }
+
+th:nth-child(2), td:nth-child(2) { 
+  width: 190px;
+  white-space: nowrap;
+}
+
 
 
 

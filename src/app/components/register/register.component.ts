@@ -71,12 +71,10 @@ export class RegisterComponent implements OnInit {
 
         this.userOperationClaimService.add(userOperationClaim).subscribe(
           (response) => {
-            console.log(response);
-            //this.toastrService.info(response.message);
+            this.toastrService.info(response.message);
             this.router.navigate(['/login']);
           },
           (responseError) => {
-            console.log();
             this.toastrService.error(
               'Could not assign you a role, please contact admin'
             );

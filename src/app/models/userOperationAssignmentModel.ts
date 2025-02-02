@@ -1,15 +1,19 @@
-export class UserOperationAssignmentModel
-{
-    userId: number = 0;
+export class UserOperationAssignmentModel {
+  id: number = 0;
 
-    operationClaimName: string = '';
+  userId: number = 0;
 
-    firstName: string = '';
+  operationClaimId: number = 0;
 
-    lastName: string = '';
+  operationClaimName: string = '';
 
-    email: string = '';
+  firstName: string = '';
 
-    phoneNumber: string = '';
+  lastName: string = '';
 
+  email: string = '';
+
+  phoneNumber: string = '';
+
+  isDeleted: boolean = false;
 }

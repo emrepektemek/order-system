@@ -39,12 +39,14 @@ th , td{
   border-right-color: rgb(123, 0, 232);
   border-left-color: rgb(123, 0, 232);
 }
-
-.custom-td{
-  max-width: 150px; 
-  overflow: hidden; 
-  white-space: nowrap;
+.custom-td {
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  overflow: hidden;
+  max-width: 200px; 
 }
+
 
 .custom-icon-edit {
   color: rgb(123, 0, 232);
@@ -122,7 +124,7 @@ th , td{
   background-color: rgb(123, 0, 232); 
 }
 
-th:nth-child(2), td:nth-child(2) { 
+th:nth-child(2), td:nth-child(2),th:nth-child(3), td:nth-child(3)  { 
   width: 190px;
   white-space: nowrap;
 }

@@ -12,8 +12,6 @@ import { AuthService } from '../../services/auth.service';
 
 import { ToastrService } from 'ngx-toastr';
 
-import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-user-create',
   imports: [ReactiveFormsModule],
@@ -28,8 +26,7 @@ export class UserCreateComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private toastrService: ToastrService,
-    private router: Router
+    private toastrService: ToastrService
   ) {}
   ngOnInit() {
     this.createRegisterForm();

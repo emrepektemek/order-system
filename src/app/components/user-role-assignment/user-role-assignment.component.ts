@@ -46,7 +46,6 @@ export class UserRoleAssignmentComponent implements OnInit {
 
   getUsers() {
     this.userService.getUsers().subscribe((response) => {
-      console.log(response.data);
       this.userOperationAssignments = response.data;
       this.dataLoaded = true;
     });

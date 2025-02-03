@@ -14,25 +14,33 @@
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Phone Number</th>
-            <th scope="col">Assign a Role</th>
+            <th scope="col"></th>
           </tr>
         </thead>    
+
         <tbody>
-          <ng-container *ngFor="let userOperationAssignment of userOperationAssignments">
-            <tr class="align-middle" *ngIf="!userOperationAssignment.isDeleted">
-              <td class="fw-bold">{{ userOperationAssignment.userId }}</td>
-              <td class="custom-td">{{ userOperationAssignment.operationClaimName || 'not assigned' }}</td>
-              <td class="custom-td">{{ userOperationAssignment.email }}</td>
-              <td>{{ userOperationAssignment.firstName }}</td>
-              <td>{{ userOperationAssignment.lastName }}</td>
-              <td class="custom-td">{{ userOperationAssignment.phoneNumber }}</td>
-              <td>  
-                  <i class="fa fa-pencil-alt custom-icon-edit fa-lg mx-2" (click)="openUpdateModal(userOperationAssignment.id, userOperationAssignment.userId)"></i>
-                  <i class="fa fa-trash custom-icon-delete fa-lg mx-3" (click)="openDeleteModal(userOperationAssignment.id, userOperationAssignment.userId, userOperationAssignment.operationClaimId)"></i>
+          <tr class="align-middle" *ngFor="let userOperationAssignment of userOperationAssignments">
+            <td class="fw-bold">{{ userOperationAssignment.userId }}</td>
+
+            <ng-container *ngIf="!userOperationAssignment.isDeleted">
+              <td class="custom-td">
+                {{ userOperationAssignment.operationClaimName }}
               </td>
-            </tr>
-          </ng-container>
-         
+            </ng-container>
+            
+            <ng-container *ngIf="userOperationAssignment.isDeleted">
+              <td class="custom-td">not assigned</td>
+            </ng-container>
+
+            <td class="custom-td text-truncate">{{ userOperationAssignment.email }}</td>
+            <td>{{ userOperationAssignment.firstName }}</td>
+            <td>{{ userOperationAssignment.lastName }}</td>
+            <td class="custom-td">{{ userOperationAssignment.phoneNumber }}</td>
+            <td>  
+                <i class="fa fa-pencil-alt custom-icon-edit fa-lg mx-2" (click)="openUpdateModal(userOperationAssignment.id, userOperationAssignment.userId)"></i>
+                <i class="fa fa-trash custom-icon-delete fa-lg mx-3" (click)="openDeleteModal(userOperationAssignment.id, userOperationAssignment.userId, userOperationAssignment.operationClaimId)"></i>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

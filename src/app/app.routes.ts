@@ -7,7 +7,7 @@ import { InventoryComponent } from './components/inventory/inventory.component';
 import { OrderComponent } from './components/order/order.component';
 import { UserCreateComponent } from './components/user-create/user-create.component';
 import { UserRoleAssignmentComponent } from './components/user-role-assignment/user-role-assignment.component';
-import { CustomerAssignmentComponent } from './components/customer-assignment/customer-assignment.component';
+import { CustomerCreateComponent } from './components/customer-create/customer-create.component';
 import { ProductAssignmentComponent } from './components/product-assignment/product-assignment.component';
 import { OrderAssignmentComponent } from './components/order-assignment/order-assignment.component';
 
@@ -25,7 +25,7 @@ export const routes: Routes = [
       { path: 'user-create', component: UserCreateComponent },
       { path: 'product-assignment', component: ProductAssignmentComponent },
       { path: 'user-role-assignment', component: UserRoleAssignmentComponent },
-      { path: 'customer-assignment', component: CustomerAssignmentComponent },
+      { path: 'customer-create', component: CustomerCreateComponent },
       { path: 'order-assignment', component: OrderAssignmentComponent },
     ],
   },

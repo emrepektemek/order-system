@@ -11,10 +11,13 @@ import {
 import { AuthService } from '../../services/auth.service';
 
 import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
+import { UserOperationClaimService } from '../../services/userOperationClaimService';
+import { UserOperationClaimModel } from '../../models/userOperationClaimModel';
 
 @Component({
   selector: 'app-user-create',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './user-create.component.html',
   styleUrl: './user-create.component.css',
 })
@@ -23,9 +26,12 @@ export class UserCreateComponent implements OnInit {
 
   selectedGender: string = '';
 
+  dataAdd: boolean = true;
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private userOperationClaimService: UserOperationClaimService,
     private toastrService: ToastrService
   ) {}
   ngOnInit() {
@@ -50,12 +56,32 @@ export class UserCreateComponent implements OnInit {
 
   register() {
     let registerModel = Object.assign({}, this.registerForm.value);
+    this.dataAdd = false;
     this.authService.register(registerModel).subscribe(
       (response) => {
         this.toastrService.info(response.message);
         this.registerForm.reset();
+
+        let userOperationClaim: UserOperationClaimModel = {
+          userId: response.data.id,
+          operationClaimId: 4,
+        };
+
+        this.userOperationClaimService.add(userOperationClaim).subscribe(
+          (response) => {
+            this.toastrService.info(response.message);
+          },
+          (responseError) => {
+            this.toastrService.error(
+              'Could not assign you a role, please contact admin'
+            );
+          }
+        );
+
+        this.dataAdd = true;
       },
       (responseError) => {
+        this.dataAdd = true;
         if (responseError.error.ValidationErrors) {
           this.toastrService.error(
             responseError.error.ValidationErrors[0].ErrorMessage

@@ -10,15 +10,17 @@ import {
 
 import { ToastrService } from 'ngx-toastr';
 import { CustomerService } from './../../services/customer.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-customer-create',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './customer-create.component.html',
   styleUrl: './customer-create.component.css',
 })
 export class CustomerCreateComponent implements OnInit {
   customerForm: FormGroup;
+  dataAdd: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,12 +44,15 @@ export class CustomerCreateComponent implements OnInit {
   createCustomer() {
     let customerModel = Object.assign({}, this.customerForm.value);
 
+    this.dataAdd = false;
     this.customerService.add(customerModel).subscribe(
       (response) => {
         this.toastrService.info(response.message);
         this.customerForm.reset();
+        this.dataAdd = true;
       },
       (responseError) => {
+        this.dataAdd = true;
         if (responseError.error.ValidationErrors) {
           this.toastrService.error(
             responseError.error.ValidationErrors[0].ErrorMessage

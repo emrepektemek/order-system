@@ -13,10 +13,11 @@ import { ToastrService } from 'ngx-toastr';
 import { ProductService } from './../../services/product.service';
 
 import { sizeMap } from '../../constants/size-map';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-create',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
 
   templateUrl: './product-create.component.html',
   styleUrl: './product-create.component.css',
@@ -25,6 +26,7 @@ export class ProductCreateComponent implements OnInit {
   selectedSize: number = 0;
   productForm: FormGroup;
   sizes = sizeMap;
+  dataAdd: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -54,12 +56,16 @@ export class ProductCreateComponent implements OnInit {
   createProduct() {
     let productModel = Object.assign({}, this.productForm.value);
 
+    this.dataAdd = false;
+
     this.productService.add(productModel).subscribe(
       (response) => {
         this.toastrService.info(response.message);
         this.productForm.reset();
+        this.dataAdd = true;
       },
       (responseError) => {
+        this.dataAdd = true;
         if (responseError.error.ValidationErrors) {
           this.toastrService.error(
             responseError.error.ValidationErrors[0].ErrorMessage

@@ -1,3 +1,10 @@
+<div *ngIf="dataAdd == false" class="d-flex justify-content-center align-items-center">
+  <div class="spinner-border custom-spinner" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+
 <div class="container">
     <main class="form-signin custom-main">
         <form [formGroup]="productForm">
@@ -9,13 +16,12 @@
                     formControlName="categoryId"
                     type="number" 
                     class="form-control" 
-                    id="category" 
+                    id="categoryId"   
                     placeholder="Number"
                 >
-                <label for="category">Category</label>
+                <label for="categoryId">Category</label>  
             </div>   
         </div>
-        
 
         <div class="custom-form-container">
             <div class="form-floating">
@@ -23,14 +29,12 @@
                     formControlName="productName"
                     type="text" 
                     class="form-control" 
-                    id="customerName" 
-                    placeholder="Number"  
+                    id="productName"   
+                    placeholder="Product Name"  
                 >
-                <label for="productName">Product Name</label>
+                <label for="productName">Product Name</label>  
             </div>
-
         </div>
-
 
         <div class="custom-form-container">
             <div class="form-floating">
@@ -39,14 +43,13 @@
                     type="number"
                     step="0.01" 
                     class="form-control" 
-                    id="unitPrice" 
+                    id="unitPrice"   
                     placeholder="Unit Price"  
                 >
-                <label for="floatingAddress">Unit Price</label>
+                <label for="unitPrice">Unit Price</label>  
             </div>
         </div>
 
-    
         <div class="custom-dropdown-container">
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle custom-dropdown-btn" type="button" id="genderDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -64,29 +67,24 @@
                 </ul>
             </div>
         </div>
-    
+
         <div class="custom-form-container">
             <div class="form-floating">
                 <input 
                     formControlName="description"
                     type="text" 
                     class="form-control" 
-                    id="description" 
+                    id="description"   
                     placeholder="Description"  
                 >
-                <label for="phoneNumber">Description</label>
+                <label for="description">Description</label>  
             </div>
         </div>
 
-       
         <div class="custom-btn-container">
-            <button class="btn custom-btn" type="submit" (click)="createProduct()" >Create Product</button>
+            <button class="btn custom-btn" type="submit" (click)="createProduct()">Create Product</button>
         </div>
-       
+
         </form>
     </main>
-
 </div>
-
-
-

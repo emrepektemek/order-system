@@ -16,7 +16,6 @@ import { ToastrService } from 'ngx-toastr';
 
 import { Router, RouterLink } from '@angular/router';
 import { UserOperationClaimModel } from '../../models/userOperationClaimModel';
-import { response } from 'express';
 
 @Component({
   selector: 'app-register',

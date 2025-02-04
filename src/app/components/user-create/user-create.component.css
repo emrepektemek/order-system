@@ -81,3 +81,9 @@
   border-radius: 5px; 
 }
 
+.custom-spinner {
+  border-top-color: rgb(123, 0, 232);
+  border-right-color: rgb(123, 0, 232);
+  border-left-color: rgb(123, 0, 232);
+}
+

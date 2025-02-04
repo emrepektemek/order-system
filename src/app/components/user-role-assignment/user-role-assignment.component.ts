@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserOperationAssignmentModel } from '../../models/userOperationAssignmentModel';
 import { UserOperationAssignmentUpdateModel } from '../../models/userOperationAssignmentUpdateModel';
-import { UserService } from './../../services/user.service';
 import { UserOperationClaimService } from '../../services/userOperationClaimService';
 import { roleMap } from '../../constants/role-map';
-import { response } from 'express';
 import { ToastrService } from 'ngx-toastr';
 import { UserOperationAssignmentDeleteModel } from '../../models/userOperationAssignmentDeleteModel';
+
+import { take } from 'rxjs';
+import { UserState } from '../../store/user.state';
 
 declare var bootstrap: any;
 
@@ -29,26 +30,23 @@ export class UserRoleAssignmentComponent implements OnInit {
   userRoles = roleMap;
 
   constructor(
-    private userService: UserService,
     private userOperationClaimService: UserOperationClaimService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private userState: UserState
   ) {}
 
   ngOnInit(): void {
-    this.getUsers();
+    this.userState.users$.pipe(take(1)).subscribe((reports) => {
+      this.userOperationAssignments = reports;
+      this.dataLoaded = true;
+    });
+
     this.updateModalElement = new bootstrap.Modal(
       document.getElementById('userOperationClaimUpdateModal')!
     );
     this.deleteModalElement = new bootstrap.Modal(
       document.getElementById('userOperationClaimDeleteModal')!
     );
-  }
-
-  getUsers() {
-    this.userService.getUsers().subscribe((response) => {
-      this.userOperationAssignments = response.data;
-      this.dataLoaded = true;
-    });
   }
 
   openUpdateModal(userOperationClaimId: number, userId: number) {
@@ -120,7 +118,5 @@ export class UserRoleAssignmentComponent implements OnInit {
         this.deleteModalElement.hide();
       }
     );
-
-    console.log(' ');
   }
 }

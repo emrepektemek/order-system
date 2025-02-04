@@ -8,7 +8,7 @@ import { OrderComponent } from './components/order/order.component';
 import { UserCreateComponent } from './components/user-create/user-create.component';
 import { UserRoleAssignmentComponent } from './components/user-role-assignment/user-role-assignment.component';
 import { CustomerCreateComponent } from './components/customer-create/customer-create.component';
-import { ProductAssignmentComponent } from './components/product-assignment/product-assignment.component';
+import { ProductCreateComponent } from './components/product-create/product-create.component';
 import { OrderAssignmentComponent } from './components/order-assignment/order-assignment.component';
 
 export const routes: Routes = [
@@ -23,7 +23,7 @@ export const routes: Routes = [
       { path: 'inventory', component: InventoryComponent },
       { path: 'order', component: OrderComponent },
       { path: 'user-create', component: UserCreateComponent },
-      { path: 'product-assignment', component: ProductAssignmentComponent },
+      { path: 'product-create', component: ProductCreateComponent },
       { path: 'user-role-assignment', component: UserRoleAssignmentComponent },
       { path: 'customer-create', component: CustomerCreateComponent },
       { path: 'order-assignment', component: OrderAssignmentComponent },

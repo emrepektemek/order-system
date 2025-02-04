@@ -11,12 +11,9 @@ import {
 import { ToastrService } from 'ngx-toastr';
 import { CustomerService } from './../../services/customer.service';
 
-import { Customer } from '../../models/customer';
-
 @Component({
   selector: 'app-customer-create',
   imports: [ReactiveFormsModule],
-
   templateUrl: './customer-create.component.html',
   styleUrl: './customer-create.component.css',
 })

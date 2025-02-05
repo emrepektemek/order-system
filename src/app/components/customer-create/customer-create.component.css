@@ -23,6 +23,12 @@
   margin-top: 34px; 
 }
 
+.custom-input:focus {
+  outline: none; 
+  box-shadow: 0 0 3px 2px rgb(123, 0, 232);
+  border-color: rgb(123, 0, 232);
+}
+
 .form-signin {
   padding: 1rem;
 }

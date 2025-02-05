@@ -4,7 +4,24 @@
   </div>
 </div>
 
+
+
 <div class="container">
+
+  <div class="custom-search-bar-container d-flex justify-content-center">
+    <form class="form-inline d-flex w-50">
+      <input 
+        class="form-control mr-sm-2 custom-input" 
+        type="search" 
+        placeholder="Search" 
+        aria-label="Search"  
+        [(ngModel)]="searchText"
+        name="search"
+      >
+    </form>
+  </div>
+  
+
   <table class="table table-hover table-light custom-table">
     <thead>
       <tr class="align-middle">
@@ -20,7 +37,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="align-middle" *ngFor="let orderReport of orderReports">
+      <tr class="align-middle" *ngFor="let orderReport of filteredOrders">
         <th scope="row">{{ orderReport.orderId }}</th>
         <td>{{ orderReport.customerName }}</td>
         <td>{{ orderReport.productName }}</td>

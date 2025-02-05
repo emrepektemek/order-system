@@ -22,6 +22,11 @@ th , td{
   font-size: 14px;
 }
 
+th:nth-child(5), td:nth-child(5)  { 
+  width: 130px;
+}
+
+
 .custom-table thead th {
   background-color: rgb(123, 0, 232) !important;
   color: white;
@@ -33,6 +38,34 @@ th , td{
   transform: scale(1.05); 
   transition: transform 0.3s ease-in-out; 
 }
+
+.custom-search-bar-container{
+  margin-bottom: 20px;
+}
+
+.custom-input {
+  height: 44px; 
+  font-size: 15px; 
+  padding: 10px; 
+}
+
+
+.custom-input:focus {
+  outline: none; 
+  box-shadow: 0 0 3px 2px rgb(123, 0, 232);
+  border-color: rgb(123, 0, 232);
+}
+
+.search-btun-outline-success {
+  border-color: rgb(123, 0, 232) !important; 
+  color: rgb(123, 0, 232);
+}
+
+.search-btun-outline-success:hover {
+  background-color: rgb(123, 0, 232);
+  color: white;
+}
+
 
 .custom-spinner {
   border-top-color: rgb(123, 0, 232);
@@ -58,4 +91,5 @@ th , td{
   color: #ff0c24;
   font-size: 9px;
 }
+
 

@@ -37,6 +37,12 @@
     font-size: 16px; 
     
   }
+
+  .custom-input:focus {
+    outline: none; 
+    box-shadow: 0 0 3px 2px rgb(123, 0, 232);
+    border-color: rgb(123, 0, 232);
+  }
   
   .logo-image {
     width: 100px;             
@@ -88,5 +94,7 @@
     border-right-color: rgb(123, 0, 232);
     border-left-color: rgb(123, 0, 232);
   }
+
+  
   
   

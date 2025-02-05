@@ -129,6 +129,13 @@ th:nth-child(2), td:nth-child(2),th:nth-child(3), td:nth-child(3)  {
   white-space: nowrap;
 }
 
+.custom-spinner {
+  border-top-color: rgb(123, 0, 232);
+  border-right-color: rgb(123, 0, 232);
+  border-left-color: rgb(123, 0, 232);
+}
+
+
 
 
 

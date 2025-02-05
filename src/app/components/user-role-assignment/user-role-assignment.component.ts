@@ -19,8 +19,6 @@ declare var bootstrap: any;
   styleUrl: './user-role-assignment.component.css',
 })
 export class UserRoleAssignmentComponent implements OnInit {
-  userOperationAssignments: UserOperationAssignmentModel[] = [];
-  dataLoaded: boolean = false;
   selectedUserClaimOperationId: number = 0;
   selectedRole: number = 0;
   selectedUserId: number = 0;
@@ -28,19 +26,16 @@ export class UserRoleAssignmentComponent implements OnInit {
   updateModalElement: any;
   deleteModalElement: any;
   userRoles = roleMap;
+  dataUpdated: boolean = true;
+  dataDeleted: boolean = true;
 
   constructor(
     private userOperationClaimService: UserOperationClaimService,
     private toastrService: ToastrService,
-    private userState: UserState
+    public userState: UserState
   ) {}
 
   ngOnInit(): void {
-    this.userState.users$.pipe(take(1)).subscribe((reports) => {
-      this.userOperationAssignments = reports;
-      this.dataLoaded = true;
-    });
-
     this.updateModalElement = new bootstrap.Modal(
       document.getElementById('userOperationClaimUpdateModal')!
     );
@@ -75,6 +70,15 @@ export class UserRoleAssignmentComponent implements OnInit {
   }
 
   saveRole() {
+    this.dataUpdated = false;
+
+    if (this.selectedRole == 0) {
+      this.toastrService.error('Please select a role ');
+
+      this.dataUpdated = true;
+      return;
+    }
+
     let updateObject: UserOperationAssignmentUpdateModel = {
       id: this.selectedUserClaimOperationId,
       userId: this.selectedUserId,
@@ -86,18 +90,24 @@ export class UserRoleAssignmentComponent implements OnInit {
     this.userOperationClaimService.update(updateObject).subscribe(
       (response) => {
         this.toastrService.info(response.message);
+        this.userState.updateUserRole(this.selectedUserId, this.selectedRole);
+
         this.updateModalElement.hide();
+
+        this.dataUpdated = true;
       },
       (responseError) => {
         this.toastrService.error(
           'Could not update that role, please contact admin'
         );
         this.updateModalElement.hide();
+        this.dataUpdated = true;
       }
     );
   }
 
   deleteRole() {
+    this.dataDeleted = false;
     let deleteObject: UserOperationAssignmentDeleteModel = {
       id: this.selectedUserClaimOperationId,
       userId: this.selectedUserId,
@@ -109,13 +119,18 @@ export class UserRoleAssignmentComponent implements OnInit {
     this.userOperationClaimService.delete(deleteObject).subscribe(
       (response) => {
         this.toastrService.info(response.message);
+        this.userState.deleteUserRole(this.selectedUserId);
+
         this.deleteModalElement.hide();
+        this.dataDeleted = true;
       },
       (responseError) => {
         this.toastrService.error(
           'Could not delete that role, please contact admin'
         );
         this.deleteModalElement.hide();
+
+        this.dataDeleted = true;
       }
     );
   }

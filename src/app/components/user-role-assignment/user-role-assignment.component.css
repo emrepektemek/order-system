@@ -15,7 +15,14 @@ th , td{
   background-color: #ffffff; 
 }
 
-.custom-table th, .custom-table td {
+.custom-table th{
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  padding: 7px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.custom-table td {
   border: 1px solid rgba(255, 255, 255, 0.5) !important;
   padding: 16px;
   text-align: center;

@@ -7,11 +7,16 @@ import {
   withEventReplay,
 } from '@angular/platform-browser';
 
-import { provideHttpClient } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptors,
+} from '@angular/common/http';
 
 import { provideToastr } from 'ngx-toastr';
 
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { authInterceptor } from './interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,5 +30,6 @@ export const appConfig: ApplicationConfig = {
       positionClass: 'toast-top-right',
       timeOut: 4000,
     }),
+    provideHttpClient(withInterceptors([authInterceptor])),
   ],
 };

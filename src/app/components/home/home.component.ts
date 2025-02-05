@@ -59,34 +59,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  /*
-  ngOnInit(): void {
-    this.getInvetoryReports();
-    this.getOrderReports();
-    this.getUsers();
-  }
-
-  getInvetoryReports() {
-    this.inventoryService.getReports().subscribe((response) => {
-      this.inventoryReportState.setInventoryReports(response.data);
-      this.dataLoaded = true;
-    });
-  }
-
-  getOrderReports() {
-    this.orderService.getReports().subscribe((response) => {
-      this.orderReportState.setOrderReports(response.data);
-      this.dataLoaded = true;
-    });
-  }
-
-  getUsers() {
-    this.userService.getUsers().subscribe((response) => {
-      this.userSate.setUsers(response.data);
-      this.dataLoaded = true;
-    });
-  }*/
-
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);

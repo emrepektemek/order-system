@@ -97,9 +97,7 @@ export class UserRoleAssignmentComponent implements OnInit {
         this.dataUpdated = true;
       },
       (responseError) => {
-        this.toastrService.error(
-          'Could not update that role, please contact admin'
-        );
+        this.toastrService.error(responseError.error.message);
         this.updateModalElement.hide();
         this.dataUpdated = true;
       }
@@ -125,9 +123,7 @@ export class UserRoleAssignmentComponent implements OnInit {
         this.dataDeleted = true;
       },
       (responseError) => {
-        this.toastrService.error(
-          'Could not delete that role, please contact admin'
-        );
+        this.toastrService.error(responseError.error.message);
         this.deleteModalElement.hide();
 
         this.dataDeleted = true;

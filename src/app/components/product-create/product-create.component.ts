@@ -60,6 +60,7 @@ export class ProductCreateComponent implements OnInit {
 
     this.productService.add(productModel).subscribe(
       (response) => {
+        console.log(response);
         this.toastrService.info(response.message);
         this.productForm.reset();
         this.dataAdd = true;

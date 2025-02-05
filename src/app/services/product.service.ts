@@ -12,7 +12,6 @@ export class ProductService {
   constructor(private httpClient: HttpClient) {}
 
   add(productAddModel: ProductAddModel) {
-    console.log(productAddModel);
     return this.httpClient.post<ResponseModel>(
       this.apiUrl + 'add',
       productAddModel

@@ -58,7 +58,7 @@ export class CustomerCreateComponent implements OnInit {
             responseError.error.ValidationErrors[0].ErrorMessage
           );
         } else {
-          this.toastrService.error(responseError.error);
+          this.toastrService.error(responseError.error.message);
         }
       }
     );

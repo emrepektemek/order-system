@@ -39,3 +39,20 @@ th , td{
   border-right-color: rgb(123, 0, 232);
   border-left-color: rgb(123, 0, 232);
 }
+
+.custom-search-bar-container{
+  margin-bottom: 20px;
+}
+
+.custom-input {
+  height: 44px; 
+  font-size: 15px; 
+  padding: 10px; 
+}
+
+
+.custom-input:focus {
+  outline: none; 
+  box-shadow: 0 0 3px 2px rgb(123, 0, 232);
+  border-color: rgb(123, 0, 232);
+}

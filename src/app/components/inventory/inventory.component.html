@@ -5,6 +5,19 @@
 </div>
 
 <div class="container">
+
+  <div class="custom-search-bar-container d-flex justify-content-center">
+    <form class="form-inline d-flex w-50">
+      <input 
+        class="form-control mr-sm-2 custom-input" 
+        type="search" 
+        placeholder="Search" 
+        aria-label="Search"  
+        [(ngModel)]="searchText"
+        name="search"
+      >
+    </form>
+  </div>
     
     <table class="table table-hover table-light custom-table ">
       <thead>
@@ -17,7 +30,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="align-middle" *ngFor="let inventoryReport of inventoryReports">
+        <tr class="align-middle" *ngFor="let inventoryReport of filteredInventoryReports">
           <th  scope="row">{{ inventoryReport.inventoryId }}</th>
           <td>{{ inventoryReport.warehouseName }}</td>
           <td>{{ inventoryReport.warehouseLocation }}</td>

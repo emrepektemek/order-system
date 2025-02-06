@@ -62,23 +62,6 @@ export class RegisterComponent implements OnInit {
     this.authService.register(registerModel).subscribe(
       (response) => {
         this.toastrService.info(response.message);
-
-        let userOperationClaim: UserOperationClaimModel = {
-          userId: response.data.id,
-          operationClaimId: 4,
-        };
-
-        this.userOperationClaimService.add(userOperationClaim).subscribe(
-          (response) => {
-            this.toastrService.info(response.message);
-            this.router.navigate(['/login']);
-          },
-          (responseError) => {
-            this.toastrService.error(
-              'Could not assign you a role, please contact admin'
-            );
-          }
-        );
       },
       (responseError) => {
         if (responseError.error.ValidationErrors) {

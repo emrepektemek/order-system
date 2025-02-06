@@ -19,7 +19,7 @@ export class HeaderComponent {
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
-    this.toastrService.info('Çıkış Yapıldı');
+    this.toastrService.info('Logged out');
   }
   goToHome() {
     this.router.navigate(['/home']);

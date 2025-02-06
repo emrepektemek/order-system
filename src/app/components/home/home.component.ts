@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
     this.orderReportState.clearOrderReports();
     this.inventoryReportState.clearInventoryReports();
     this.router.navigate(['/login']);
-    this.toastrService.info('Çıkış Yapıldı');
+    this.toastrService.info('Logged out');
   }
   goToHome() {
     this.router.navigate(['/home']);

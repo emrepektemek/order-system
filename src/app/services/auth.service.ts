@@ -45,7 +45,7 @@ export class AuthService {
         ] || null
       );
     } catch (error) {
-      console.error('Token decode edilirken hata oluştu:', error);
+      console.error('An error occurred while decoding the token:', error);
       return null;
     }
   }

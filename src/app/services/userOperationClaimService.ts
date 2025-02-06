@@ -16,15 +16,7 @@ export class UserOperationClaimService {
 
   constructor(private httpClient: HttpClient) {}
 
-  // bunu backend'de yapacaksın bir kullanıcı kayıt olduğunda ona default user claim'i ata
-  add(userOperationClaimModel: UserOperationClaimModel) {
-    return this.httpClient.post<
-      ResponseSingleDataModel<UserOperationClaimModel>
-    >(this.apiUrl + 'add', userOperationClaimModel);
-  }
-
   update(userOperationClaimModel: UserOperationAssignmentDeleteModel) {
-    console.log('Add');
     return this.httpClient.post<
       ResponseSingleDataModel<UserOperationAssignmentUpdateModel>
     >(this.apiUrl + 'update', userOperationClaimModel);

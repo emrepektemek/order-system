@@ -62,22 +62,6 @@ export class UserCreateComponent implements OnInit {
         this.toastrService.info(response.message);
         this.registerForm.reset();
 
-        let userOperationClaim: UserOperationClaimModel = {
-          userId: response.data.id,
-          operationClaimId: 4,
-        };
-
-        this.userOperationClaimService.add(userOperationClaim).subscribe(
-          (response) => {
-            this.toastrService.info(response.message);
-          },
-          (responseError) => {
-            this.toastrService.error(
-              'Could not assign you a role, please contact admin'
-            );
-          }
-        );
-
         this.dataAdd = true;
       },
       (responseError) => {

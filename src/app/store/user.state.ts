@@ -42,6 +42,10 @@ export class UserState {
     this.users.next([...updatedUsers]);
   }
 
+  clearUsers(): void {
+    this.users.next([]);
+  }
+
   getRoleName(role: number): string {
     return this.userRoles[role] || this.userRoles[0];
   }

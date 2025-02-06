@@ -13,4 +13,8 @@ export class InventoryReportState {
   setInventoryReports(reports: InventoryReportModel[]) {
     this.inventoryReports.next(reports);
   }
+
+  clearInventoryReports(): void {
+    this.inventoryReports.next([]);
+  }
 }

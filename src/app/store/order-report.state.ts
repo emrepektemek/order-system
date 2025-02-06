@@ -13,4 +13,8 @@ export class OrderReportState {
   setOrderReports(reports: OrderReportModel[]) {
     this.orderReports.next(reports);
   }
+
+  clearOrderReports(): void {
+    this.orderReports.next([]); // Order raporlarını boş bir dizi ile güncelliyoruz
+  }
 }

@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 
 import { UserIdState } from '../../store/user-id.state';
+import { roleMap } from '../../constants/role-map';
 
 @Component({
   selector: 'app-user-create',
@@ -24,8 +25,11 @@ import { UserIdState } from '../../store/user-id.state';
 export class UserCreateComponent implements OnInit {
   registerForm: FormGroup;
   userId: number | null = null;
+  selectedRole: number = 0;
   selectedGender: string = '';
   dataAdd: boolean = true;
+
+  userRoles = roleMap;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -57,10 +61,20 @@ export class UserCreateComponent implements OnInit {
     this.registerForm.patchValue({ gender });
   }
 
+  getRoleName(role: number): string {
+    return this.userRoles[role] || this.userRoles[0];
+  }
+
+  selectRole(role: number): void {
+    console.log(role);
+    this.selectedRole = role;
+  }
+
   register() {
     console.log(this.userId);
     let registerModel = Object.assign({}, this.registerForm.value, {
       createdUserId: this.userId,
+      operationClaimId: this.selectedRole,
     });
 
     this.dataAdd = false;

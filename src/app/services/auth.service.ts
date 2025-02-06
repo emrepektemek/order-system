@@ -7,8 +7,6 @@ import { RegisterModel } from '../models/registerModel';
 import { IdTokenModel } from '../models/idTokenModel';
 import { jwtDecode } from 'jwt-decode';
 
-import { UserClaimState } from '../store/user-claim.state';
-import { UserIdState } from '../store/user-id.state';
 import { AdminRegisterModel } from '../models/adminRegisterModel';
 
 @Injectable({
@@ -17,11 +15,7 @@ import { AdminRegisterModel } from '../models/adminRegisterModel';
 export class AuthService {
   apiUrl = 'https://localhost:44372/api/Auth/';
 
-  constructor(
-    private httpClient: HttpClient,
-    private userClaimState: UserClaimState,
-    private userIdState: UserIdState
-  ) {}
+  constructor(private httpClient: HttpClient) {}
 
   login(loginModel: LoginModel) {
     return this.httpClient.post<ResponseSingleDataModel<TokenModel>>(
@@ -79,12 +73,12 @@ export class AuthService {
 
   setClaim(): void {
     const claim = this.getUserClaim();
-    this.userClaimState.setClaim(claim);
+    localStorage.setItem('claim', String(claim));
   }
 
   setUserId(): void {
     const userId = this.getUserId();
-    this.userIdState.setUserId(userId);
+    localStorage.setItem('userId', String(userId));
   }
 
   isAuthenticated() {
@@ -97,5 +91,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('claim');
+    localStorage.removeItem('userId');
   }
 }

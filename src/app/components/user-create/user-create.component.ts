@@ -12,8 +12,6 @@ import { AuthService } from '../../services/auth.service';
 
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-
-import { UserIdState } from '../../store/user-id.state';
 import { roleMap } from '../../constants/role-map';
 
 @Component({
@@ -24,7 +22,7 @@ import { roleMap } from '../../constants/role-map';
 })
 export class UserCreateComponent implements OnInit {
   registerForm: FormGroup;
-  userId: number | null = null;
+  userId: string | null = null;
   selectedRole: number = 0;
   selectedGender: string = '';
   dataAdd: boolean = true;
@@ -34,15 +32,11 @@ export class UserCreateComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private toastrService: ToastrService,
-    private userIdState: UserIdState
+    private toastrService: ToastrService
   ) {}
   ngOnInit() {
     this.createRegisterForm();
-
-    this.userIdState.userId$.subscribe((userId) => {
-      this.userId = userId;
-    });
+    this.userId = localStorage.getItem('userId');
   }
 
   createRegisterForm() {
@@ -66,12 +60,10 @@ export class UserCreateComponent implements OnInit {
   }
 
   selectRole(role: number): void {
-    console.log(role);
     this.selectedRole = role;
   }
 
   register() {
-    console.log(this.userId);
     let registerModel = Object.assign({}, this.registerForm.value, {
       createdUserId: this.userId,
       operationClaimId: this.selectedRole,

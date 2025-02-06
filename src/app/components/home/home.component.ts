@@ -20,10 +20,6 @@ import { UserState } from '../../store/user.state';
 import { CommonModule } from '@angular/common';
 import { forkJoin } from 'rxjs';
 
-import { UserClaimState } from './../../store/user-claim.state';
-
-import { UserIdState } from '../../store/user-id.state';
-
 @Component({
   selector: 'app-home',
   imports: [HeaderComponent, SidebarComponent, RouterModule, CommonModule],
@@ -43,9 +39,7 @@ export class HomeComponent implements OnInit {
     private orderService: OrderService,
     private orderReportState: OrderReportState,
     private userService: UserService,
-    private userSate: UserState,
-    private userClaimState: UserClaimState,
-    private userIdState: UserIdState
+    private userSate: UserState
   ) {}
 
   ngOnInit(): void {
@@ -67,11 +61,9 @@ export class HomeComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    this.userClaimState.clearClaim();
     this.userSate.clearUsers();
     this.orderReportState.clearOrderReports();
     this.inventoryReportState.clearInventoryReports();
-    this.userIdState.clearUserId();
     this.router.navigate(['/login']);
     this.toastrService.info('Logged out');
   }

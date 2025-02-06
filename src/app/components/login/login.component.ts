@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
         (response) => {
           this.toastrService.info(response.message);
           localStorage.setItem('token', response.data.token);
+          this.authService.setClaim();
           this.router.navigate(['/home']);
         },
         (responseError) => {

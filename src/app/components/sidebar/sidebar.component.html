@@ -2,26 +2,26 @@
   <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary sidebar-container ">
       <ul class="nav nav-pills flex-column mb-auto">
         
-        <li>
+        <li *ngIf="claim ==='admin'">
           <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/user-create']" routerLinkActive="active" >
             Create User
           </a>
         </li>
 
-        <li>
+        <li *ngIf="claim ==='admin'">
           <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/user-role-assignment']" routerLinkActive="active" >
             User Role Assignment
           </a>
         </li>
 
-        <li>
+        <li *ngIf="claim ==='admin'|| claim === 'customer.representative'">
           <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/customer-create']" routerLinkActive="active" >
             Create Customer
           </a>
         </li>
 
 
-        <li>
+        <li *ngIf="claim ==='admin'|| claim === 'customer.representative'">
           <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/product-create']" routerLinkActive="active"  >
             Create Product
           </a>
@@ -34,13 +34,13 @@
           </a>
         </li>
 
-        <li>
+        <li *ngIf="claim ==='admin'|| claim === 'customer.representative'|| claim === 'user'">
           <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/inventory']" routerLinkActive="active"  >
               Inventory Report Screen
           </a>
         </li>
 
-        <li>
+        <li *ngIf="claim ==='admin'|| claim === 'customer.representative'|| claim === 'user'">
           <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/order']" routerLinkActive="active" >
             Order Report Screen
           </a>

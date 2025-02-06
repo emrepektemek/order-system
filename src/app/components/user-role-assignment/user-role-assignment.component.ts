@@ -23,6 +23,7 @@ export class UserRoleAssignmentComponent implements OnInit {
   selectedRole: number = 0;
   selectedUserId: number = 0;
   selecteOperationClaimId: number = 0;
+  userId: string | null = null;
   updateModalElement: any;
   deleteModalElement: any;
   userRoles = roleMap;
@@ -42,6 +43,8 @@ export class UserRoleAssignmentComponent implements OnInit {
     this.deleteModalElement = new bootstrap.Modal(
       document.getElementById('userOperationClaimDeleteModal')!
     );
+
+    this.userId = localStorage.getItem('userId');
   }
 
   openUpdateModal(userOperationClaimId: number, userId: number) {
@@ -85,6 +88,7 @@ export class UserRoleAssignmentComponent implements OnInit {
       operationClaimId: this.selectedRole,
       status: true,
       isDeleted: false,
+      lastUpdatedUserId: this.userId,
     };
 
     this.userOperationClaimService.update(updateObject).subscribe(
@@ -112,6 +116,7 @@ export class UserRoleAssignmentComponent implements OnInit {
       operationClaimId: this.selecteOperationClaimId,
       status: true,
       isDeleted: true,
+      lastUpdatedUserId: this.userId,
     };
 
     this.userOperationClaimService.delete(deleteObject).subscribe(

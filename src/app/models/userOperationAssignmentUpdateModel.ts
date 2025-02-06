@@ -8,4 +8,6 @@ export class UserOperationAssignmentUpdateModel {
   isDeleted: boolean = false;
 
   status: boolean = true;
+
+  lastUpdatedUserId: string | null = null;
 }

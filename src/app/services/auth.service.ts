@@ -8,6 +8,8 @@ import { IdTokenModel } from '../models/idTokenModel';
 import { jwtDecode } from 'jwt-decode';
 
 import { UserClaimState } from '../store/user-claim.state';
+import { UserIdState } from '../store/user-id.state';
+import { AdminRegisterModel } from '../models/adminRegisterModel';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +19,8 @@ export class AuthService {
 
   constructor(
     private httpClient: HttpClient,
-    private userClaimState: UserClaimState
+    private userClaimState: UserClaimState,
+    private userIdState: UserIdState
   ) {}
 
   login(loginModel: LoginModel) {
@@ -30,6 +33,13 @@ export class AuthService {
   register(registerModel: RegisterModel) {
     return this.httpClient.post<ResponseSingleDataModel<IdTokenModel>>(
       this.apiUrl + 'register',
+      registerModel
+    );
+  }
+
+  adminRegister(registerModel: AdminRegisterModel) {
+    return this.httpClient.post<ResponseSingleDataModel<IdTokenModel>>(
+      this.apiUrl + 'adminregister',
       registerModel
     );
   }
@@ -50,10 +60,31 @@ export class AuthService {
     }
   }
 
+  getUserId(): number | null {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+    try {
+      const decodedToken: any = jwtDecode(token);
+
+      return (
+        decodedToken[
+          'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
+        ] || null
+      );
+    } catch (error) {
+      console.error('An error occurred while decoding the token:', error);
+      return null;
+    }
+  }
+
   setClaim(): void {
     const claim = this.getUserClaim();
-
     this.userClaimState.setClaim(claim);
+  }
+
+  setUserId(): void {
+    const userId = this.getUserId();
+    this.userIdState.setUserId(userId);
   }
 
   isAuthenticated() {

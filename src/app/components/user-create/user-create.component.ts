@@ -12,8 +12,8 @@ import { AuthService } from '../../services/auth.service';
 
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-import { UserOperationClaimService } from '../../services/userOperationClaimService';
-import { UserOperationClaimModel } from '../../models/userOperationClaimModel';
+
+import { UserIdState } from '../../store/user-id.state';
 
 @Component({
   selector: 'app-user-create',
@@ -23,19 +23,22 @@ import { UserOperationClaimModel } from '../../models/userOperationClaimModel';
 })
 export class UserCreateComponent implements OnInit {
   registerForm: FormGroup;
-
+  userId: number | null = null;
   selectedGender: string = '';
-
   dataAdd: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private userOperationClaimService: UserOperationClaimService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private userIdState: UserIdState
   ) {}
   ngOnInit() {
     this.createRegisterForm();
+
+    this.userIdState.userId$.subscribe((userId) => {
+      this.userId = userId;
+    });
   }
 
   createRegisterForm() {
@@ -55,9 +58,14 @@ export class UserCreateComponent implements OnInit {
   }
 
   register() {
-    let registerModel = Object.assign({}, this.registerForm.value);
+    console.log(this.userId);
+    let registerModel = Object.assign({}, this.registerForm.value, {
+      createdUserId: this.userId,
+    });
+
     this.dataAdd = false;
-    this.authService.register(registerModel).subscribe(
+
+    this.authService.adminRegister(registerModel).subscribe(
       (response) => {
         this.toastrService.info(response.message);
         this.registerForm.reset();

@@ -22,6 +22,8 @@ import { forkJoin } from 'rxjs';
 
 import { UserClaimState } from './../../store/user-claim.state';
 
+import { UserIdState } from '../../store/user-id.state';
+
 @Component({
   selector: 'app-home',
   imports: [HeaderComponent, SidebarComponent, RouterModule, CommonModule],
@@ -42,7 +44,8 @@ export class HomeComponent implements OnInit {
     private orderReportState: OrderReportState,
     private userService: UserService,
     private userSate: UserState,
-    private userClaimState: UserClaimState
+    private userClaimState: UserClaimState,
+    private userIdState: UserIdState
   ) {}
 
   ngOnInit(): void {
@@ -68,6 +71,7 @@ export class HomeComponent implements OnInit {
     this.userSate.clearUsers();
     this.orderReportState.clearOrderReports();
     this.inventoryReportState.clearInventoryReports();
+    this.userIdState.clearUserId();
     this.router.navigate(['/login']);
     this.toastrService.info('Logged out');
   }

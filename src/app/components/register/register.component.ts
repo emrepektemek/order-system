@@ -10,12 +10,9 @@ import {
 
 import { AuthService } from '../../services/auth.service';
 
-import { UserOperationClaimService } from '../../services/userOperationClaimService';
-
 import { ToastrService } from 'ngx-toastr';
 
-import { Router, RouterLink } from '@angular/router';
-import { UserOperationClaimModel } from '../../models/userOperationClaimModel';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -27,14 +24,11 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
   selectedGender: string = '';
-  //createdUserId: number = 0;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private userOperationClaimService: UserOperationClaimService,
-    private toastrService: ToastrService,
-    private router: Router
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit() {

@@ -52,7 +52,12 @@ export class CustomerCreateComponent implements OnInit {
     this.customerService.add(customerModel).subscribe(
       (response) => {
         this.toastrService.info(response.message);
-        this.customerForm.reset();
+        this.customerForm.setValue({
+          customerName: '',
+          email: '',
+          address: '',
+          phoneNumber: '',
+        });
         this.dataAdd = true;
       },
       (responseError) => {

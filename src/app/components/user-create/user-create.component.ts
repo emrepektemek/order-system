@@ -74,7 +74,15 @@ export class UserCreateComponent implements OnInit {
     this.authService.adminRegister(registerModel).subscribe(
       (response) => {
         this.toastrService.info(response.message);
-        this.registerForm.reset();
+
+        this.registerForm.setValue({
+          email: '',
+          password: '',
+          firstName: '',
+          lastName: '',
+          phoneNumber: '',
+          gender: '',
+        });
 
         this.dataAdd = true;
       },

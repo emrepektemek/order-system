@@ -19,6 +19,9 @@ import { UserState } from '../../store/user.state';
 
 import { CommonModule } from '@angular/common';
 import { forkJoin } from 'rxjs';
+import { CategoryState } from '../../store/category.state';
+
+import { CategoryService } from './../../services/category.service';
 
 @Component({
   selector: 'app-home',
@@ -39,7 +42,9 @@ export class HomeComponent implements OnInit {
     private orderService: OrderService,
     private orderReportState: OrderReportState,
     private userService: UserService,
-    private userSate: UserState
+    private userSate: UserState,
+    private categoryService: CategoryService,
+    private categoryState: CategoryState
   ) {}
 
   ngOnInit(): void {
@@ -51,10 +56,12 @@ export class HomeComponent implements OnInit {
       inventory: this.inventoryService.getReports(),
       orders: this.orderService.getReports(),
       users: this.userService.getUsers(),
-    }).subscribe(({ inventory, orders, users }) => {
+      categories: this.categoryService.getAll(),
+    }).subscribe(({ inventory, orders, users, categories }) => {
       this.inventoryReportState.setInventoryReports(inventory.data);
       this.orderReportState.setOrderReports(orders.data);
       this.userSate.setUsers(users.data);
+      this.categoryState.setCategories(categories.data);
       this.dataLoaded = true;
     });
   }

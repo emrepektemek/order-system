@@ -10,19 +10,26 @@
         <form [formGroup]="productForm">
         <h2 class="custom-h2">Create Product</h2>
 
+
+
         <div class="custom-form-container">
             <div class="form-floating">
-                <input 
-                    formControlName="categoryId"
-                    type="number" 
-                    class="form-control custom-input" 
-                    id="categoryId"   
-                    placeholder="Number"
-                >
-                <label for="categoryId">Category</label>  
-            </div>   
+              <select
+                formControlName="categoryId"
+                class="form-control custom-input"
+                id="categoryId"
+                placeholder="Category"
+              >
+                <option value="0">Select Category</option>
+                <option *ngFor="let category of categories" [value]="category.id">
+                  {{ category.categoryName }}
+                </option>
+              </select>
+              <label for="categoryId">Category</label>
+            </div>
         </div>
 
+    
         <div class="custom-form-container">
             <div class="form-floating">
                 <input 

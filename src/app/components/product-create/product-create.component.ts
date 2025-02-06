@@ -14,6 +14,8 @@ import { ProductService } from './../../services/product.service';
 
 import { sizeMap } from '../../constants/size-map';
 import { CommonModule } from '@angular/common';
+import { Category } from '../../models/category';
+import { CategoryState } from '../../store/category.state';
 
 @Component({
   selector: 'app-product-create',
@@ -28,16 +30,22 @@ export class ProductCreateComponent implements OnInit {
   productForm: FormGroup;
   sizes = sizeMap;
   dataAdd: boolean = true;
+  categories: Category[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
-    private productService: ProductService
+    private productService: ProductService,
+    private categoryState: CategoryState
   ) {}
 
   ngOnInit() {
     this.createProductForm();
     this.userId = localStorage.getItem('userId');
+
+    this.categoryState.categories$.subscribe((categories) => {
+      this.categories = categories;
+    });
   }
 
   selectSize(size: number): void {
@@ -61,12 +69,16 @@ export class ProductCreateComponent implements OnInit {
     });
 
     this.dataAdd = false;
-
     this.productService.add(productModel).subscribe(
       (response) => {
-        console.log(response);
         this.toastrService.info(response.message);
-        this.productForm.reset();
+        this.productForm.setValue({
+          categoryId: 0,
+          productName: '',
+          unitPrice: 0.0,
+          size: 0,
+          description: '',
+        });
         this.dataAdd = true;
       },
       (responseError) => {

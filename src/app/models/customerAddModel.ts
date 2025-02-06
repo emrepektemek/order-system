@@ -6,4 +6,6 @@ export class CustomerAddModel {
   address: string = '';
 
   phoneNumber: string = '';
+
+  createdUserId: number = 0;
 }

@@ -4,4 +4,5 @@ export class ProductAddModel {
   sizeId: number = 0;
   unitPrice: string = '0.0';
   description: string = '';
+  createdUserId: number = 0;
 }

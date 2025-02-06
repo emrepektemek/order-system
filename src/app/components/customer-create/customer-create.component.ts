@@ -19,6 +19,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './customer-create.component.css',
 })
 export class CustomerCreateComponent implements OnInit {
+  userId: string | null = null;
   customerForm: FormGroup;
   dataAdd: boolean = true;
 
@@ -30,6 +31,7 @@ export class CustomerCreateComponent implements OnInit {
 
   ngOnInit() {
     this.createCustomerForm();
+    this.userId = localStorage.getItem('userId');
   }
 
   createCustomerForm() {
@@ -42,7 +44,9 @@ export class CustomerCreateComponent implements OnInit {
   }
 
   createCustomer() {
-    let customerModel = Object.assign({}, this.customerForm.value);
+    let customerModel = Object.assign({}, this.customerForm.value, {
+      createdUserId: this.userId,
+    });
 
     this.dataAdd = false;
     this.customerService.add(customerModel).subscribe(

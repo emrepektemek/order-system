@@ -36,13 +36,13 @@
 
         <li *ngIf="claim ==='admin'|| claim === 'customer.representative'|| claim === 'user'">
           <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/inventory']" routerLinkActive="active"  >
-              Inventory Report Screen
+              Inventory Report
           </a>
         </li>
 
         <li *ngIf="claim ==='admin'|| claim === 'customer.representative'|| claim === 'user'">
           <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/order']" routerLinkActive="active" >
-            Order Report Screen
+            Order Report
           </a>
         </li>
       </ul>

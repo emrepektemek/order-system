@@ -23,6 +23,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-create.component.css',
 })
 export class ProductCreateComponent implements OnInit {
+  userId: string | null = null;
   selectedSize: number = 0;
   productForm: FormGroup;
   sizes = sizeMap;
@@ -36,6 +37,7 @@ export class ProductCreateComponent implements OnInit {
 
   ngOnInit() {
     this.createProductForm();
+    this.userId = localStorage.getItem('userId');
   }
 
   selectSize(size: number): void {
@@ -54,7 +56,9 @@ export class ProductCreateComponent implements OnInit {
   }
 
   createProduct() {
-    let productModel = Object.assign({}, this.productForm.value);
+    let productModel = Object.assign({}, this.productForm.value, {
+      createdUserId: this.userId,
+    });
 
     this.dataAdd = false;
 

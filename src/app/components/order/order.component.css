@@ -56,9 +56,6 @@ th:nth-child(4), td:nth-child(4),th:nth-child(5), td:nth-child(5),th:nth-child(6
   border-color: rgb(123, 0, 232);
 }
 
-
-
-
 .custom-spinner {
   border-top-color: rgb(123, 0, 232);
   border-right-color: rgb(123, 0, 232);
@@ -83,5 +80,24 @@ th:nth-child(4), td:nth-child(4),th:nth-child(5), td:nth-child(5),th:nth-child(6
   color: #ff0c24;
   font-size: 9px;
 }
+
+.custom-icon-check {
+  color: #0bdb3c;
+  font-size: 15px;
+}
+
+.custom-icon-xmark {
+  color: #ff0c24;
+  font-size: 15px;
+}
+
+.custom-icon-success,
+.custom-icon-danger,
+.custom-icon-check,
+.custom-icon-xmark {
+  vertical-align: middle; 
+}
+
+
 
 

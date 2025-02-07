@@ -25,6 +25,8 @@ export class OrderComponent implements OnInit {
       this.orderReports = reports;
       this.dataLoaded = true;
     });
+
+    console.log(this.orderReports);
   }
 
   get filteredOrders(): OrderReportModel[] {
@@ -34,12 +36,14 @@ export class OrderComponent implements OnInit {
 
     const lowerCaseSearch = this.searchText.toLowerCase();
 
-    return this.orderReports.filter(
-      (order) =>
+    return this.orderReports.filter((order) => {
+      return (
         order.customerName.toLowerCase().includes(lowerCaseSearch) ||
         order.customerEmail.toLowerCase().includes(lowerCaseSearch) ||
         order.customerAddress.toLowerCase().includes(lowerCaseSearch) ||
-        order.customerPhoneNumber.includes(lowerCaseSearch)
-    );
+        order.customerPhoneNumber.includes(lowerCaseSearch) ||
+        order.productName.toLowerCase().includes(lowerCaseSearch)
+      );
+    });
   }
 }

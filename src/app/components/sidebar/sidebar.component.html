@@ -35,16 +35,17 @@
         </li>
 
         <li *ngIf="claim ==='admin'|| claim === 'customer.representative'|| claim === 'user'">
-          <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/inventory']" routerLinkActive="active"  >
-              Inventory Report
+          <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/order']" routerLinkActive="active" >
+            Orders
           </a>
         </li>
 
-        <li *ngIf="claim ==='admin'|| claim === 'customer.representative'|| claim === 'user'">
-          <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/order']" routerLinkActive="active" >
-            Order Report
+        <li *ngIf="claim ==='admin'|| claim === 'customer.representative'">
+          <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/inventory']" routerLinkActive="active"  >
+              Inventories
           </a>
         </li>
+       
       </ul>
     </div>
 </main>

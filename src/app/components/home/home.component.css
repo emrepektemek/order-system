@@ -4,14 +4,16 @@
     justify-content: center;
 }
 
+
   .main-content {
     display: flex; 
     height: 100%; 
+    padding-right: 50px; 
   }
   
   app-sidebar {
     background-color: lightblue;
-    width: 33.33%;
+    width: 28%;
     height: 100%;
   }
 

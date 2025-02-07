@@ -16,4 +16,6 @@ export class OrderReportModel {
   shipDate: Date = new Date();
 
   orderStatus: boolean = true;
+
+  isApproved: boolean = true;
 }

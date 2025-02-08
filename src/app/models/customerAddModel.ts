@@ -1,4 +1,6 @@
 export class CustomerAddModel {
+  userId: number = 0;
+
   customerName: string = '';
 
   email: string = '';

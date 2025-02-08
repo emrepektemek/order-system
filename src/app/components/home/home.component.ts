@@ -22,6 +22,8 @@ import { forkJoin } from 'rxjs';
 import { CategoryState } from '../../store/category.state';
 
 import { CategoryService } from './../../services/category.service';
+import { UserForCustomerState } from '../../store/user-for-customer.state';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-home',
@@ -44,7 +46,8 @@ export class HomeComponent implements OnInit {
     private userService: UserService,
     private userSate: UserState,
     private categoryService: CategoryService,
-    private categoryState: CategoryState
+    private categoryState: CategoryState,
+    private userForCustomerState: UserForCustomerState
   ) {}
 
   ngOnInit(): void {
@@ -57,11 +60,13 @@ export class HomeComponent implements OnInit {
       orders: this.orderService.getReports(),
       users: this.userService.getUsers(),
       categories: this.categoryService.getAll(),
-    }).subscribe(({ inventory, orders, users, categories }) => {
+      usersCustomer: this.userService.getUsersForCustomer(),
+    }).subscribe(({ inventory, orders, users, categories, usersCustomer }) => {
       this.inventoryReportState.setInventoryReports(inventory.data);
       this.orderReportState.setOrderReports(orders.data);
       this.userSate.setUsers(users.data);
       this.categoryState.setCategories(categories.data);
+      this.userForCustomerState.setUsersForCustomer(usersCustomer.data);
       this.dataLoaded = true;
     });
   }
@@ -71,6 +76,7 @@ export class HomeComponent implements OnInit {
     this.userSate.clearUsers();
     this.orderReportState.clearOrderReports();
     this.inventoryReportState.clearInventoryReports();
+    this.userForCustomerState.clearUsersForCustomer();
     this.router.navigate(['/login']);
     this.toastrService.info('Logged out');
   }

@@ -11,6 +11,8 @@ import {
 import { ToastrService } from 'ngx-toastr';
 import { CustomerService } from './../../services/customer.service';
 import { CommonModule } from '@angular/common';
+import { UserForCustomerModel } from '../../models/userForCustomerModel';
+import { UserForCustomerState } from '../../store/user-for-customer.state';
 
 @Component({
   selector: 'app-customer-create',
@@ -22,20 +24,29 @@ export class CustomerCreateComponent implements OnInit {
   userId: string | null = null;
   customerForm: FormGroup;
   dataAdd: boolean = true;
+  userForCustomer: UserForCustomerModel[] = [];
+  selectedUserId: number | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    private usersForCustomerState: UserForCustomerState
   ) {}
 
   ngOnInit() {
     this.createCustomerForm();
+
     this.userId = localStorage.getItem('userId');
+
+    this.usersForCustomerState.usersCustomer$.subscribe((userForCustomers) => {
+      this.userForCustomer = userForCustomers;
+    });
   }
 
   createCustomerForm() {
     this.customerForm = this.formBuilder.group({
+      userId: [0, [Validators.required]],
       customerName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       address: ['', [Validators.required]],
@@ -43,16 +54,38 @@ export class CustomerCreateComponent implements OnInit {
     });
   }
 
+  onEmailChange(event: Event): void {
+    const selectedEmail = (event.target as HTMLSelectElement).value;
+
+    const selectedUser = this.userForCustomer.find(
+      (user) => user.email === selectedEmail
+    );
+
+    this.selectedUserId = selectedUser?.id;
+    if (selectedUser) {
+      this.customerForm.patchValue({
+        userId: selectedUser.id,
+        email: selectedUser.email,
+        customerName: selectedUser.firstName + ' ' + selectedUser.lastName,
+        phoneNumber: selectedUser.phoneNumber,
+      });
+    }
+  }
+
   createCustomer() {
     let customerModel = Object.assign({}, this.customerForm.value, {
+      userId: this.selectedUserId,
       createdUserId: this.userId,
     });
+
+    console.log(customerModel);
 
     this.dataAdd = false;
     this.customerService.add(customerModel).subscribe(
       (response) => {
         this.toastrService.info(response.message);
         this.customerForm.setValue({
+          userId: 0,
           customerName: '',
           email: '',
           address: '',

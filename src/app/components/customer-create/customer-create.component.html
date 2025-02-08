@@ -10,6 +10,27 @@
         <form [formGroup]="customerForm">
         <h2 class="custom-h2">Create Customer</h2>
 
+        
+        <div class="custom-form-container">
+            <div class="form-floating">
+              <select
+                formControlName="email"
+                class="form-control custom-input"
+                id="email"
+                placeholder="Category"
+                (change)="onEmailChange($event)"
+              >
+                <option value="">Select User</option>
+                <option *ngFor="let users of userForCustomer" [value]="users.email">
+                  {{ users.email }}
+                </option>
+              </select>
+              <label for="email">Email</label>
+            </div>
+        </div>
+
+      
+
         <div class="custom-form-container">
     
             <div class="form-floating">
@@ -18,23 +39,10 @@
                     type="text" 
                     class="form-control custom-input" 
                     id="customerName" 
-                    placeholder="Number"  
+                    placeholder="Number"
+                    readonly  
                 >
                 <label for="phoneNumber">Name</label>
-            </div>
-        </div>
-
-
-        <div class="custom-form-container">
-            <div class="form-floating">
-                <input 
-                    formControlName="email"
-                    type="email" 
-                    class="form-control custom-input" 
-                    id="floatingInput" 
-                    placeholder="name@example.com"
-                >
-                <label for="floatingInput">Email</label>
             </div>
         </div>
 
@@ -62,6 +70,7 @@
                     class="form-control custom-input" 
                     id="phoneNumber" 
                     placeholder="Phone Number"  
+                    readonly  
                 >
                 <label for="phoneNumber">Phone Number</label>
             </div>

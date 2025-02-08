@@ -9,7 +9,9 @@ import { UserCreateComponent } from './components/user-create/user-create.compon
 import { UserRoleAssignmentComponent } from './components/user-role-assignment/user-role-assignment.component';
 import { CustomerCreateComponent } from './components/customer-create/customer-create.component';
 import { ProductCreateComponent } from './components/product-create/product-create.component';
-import { OrderAssignmentComponent } from './components/order-assignment/order-assignment.component';
+import { UserOrderComponent } from './components/user-order/user-order.component';
+import { UserOrderHistoryComponent } from './components/user-order-history/user-order-history.component';
+import { OrderApproveComponent } from './components/order-approve/order-approve.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -26,7 +28,9 @@ export const routes: Routes = [
       { path: 'product-create', component: ProductCreateComponent },
       { path: 'user-role-assignment', component: UserRoleAssignmentComponent },
       { path: 'customer-create', component: CustomerCreateComponent },
-      { path: 'order-assignment', component: OrderAssignmentComponent },
+      { path: 'order-approve', component: OrderApproveComponent },
+      { path: 'user-order', component: UserOrderComponent },
+      { path: 'user-order-history', component: UserOrderHistoryComponent },
     ],
   },
 ];

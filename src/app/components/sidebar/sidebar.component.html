@@ -27,14 +27,25 @@
           </a>
         </li>
 
-
-        <li>
-          <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/order-assignment']" routerLinkActive="active"  >
-            Order Assignment
+        <li *ngIf="claim === 'customer.representative'">
+          <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/order-approve']" routerLinkActive="active"  >
+            Approve Order
           </a>
         </li>
 
-        <li *ngIf="claim ==='admin'|| claim === 'customer.representative'|| claim === 'user'">
+        <li *ngIf="claim === 'user'">
+          <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/user-order']" routerLinkActive="active"  >
+            Order
+          </a>
+        </li>
+
+        <li *ngIf="claim === 'user'">
+          <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/user-order-history']" routerLinkActive="active"  >
+            Order History
+          </a>
+        </li>
+
+        <li *ngIf="claim ==='admin'|| claim === 'customer.representative'">
           <a class="nav-link link-body-emphasis custom-link" [routerLink]="['/home/order']" routerLinkActive="active" >
             Orders
           </a>

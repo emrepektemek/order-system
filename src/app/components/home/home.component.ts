@@ -23,7 +23,12 @@ import { CategoryState } from '../../store/category.state';
 
 import { CategoryService } from './../../services/category.service';
 import { UserForCustomerState } from '../../store/user-for-customer.state';
+
+import { ProductService } from '../../services/product.service';
+import { ProductState } from '../../store/product.state';
+
 import { CustomerService } from '../../services/customer.service';
+import { CustomerState } from '../../store/Customer.state';
 
 @Component({
   selector: 'app-home',
@@ -47,7 +52,11 @@ export class HomeComponent implements OnInit {
     private userSate: UserState,
     private categoryService: CategoryService,
     private categoryState: CategoryState,
-    private userForCustomerState: UserForCustomerState
+    private userForCustomerState: UserForCustomerState,
+    private producService: ProductService,
+    private productState: ProductState,
+    private customervice: CustomerService,
+    private customerState: CustomerState
   ) {}
 
   ngOnInit(): void {
@@ -61,14 +70,28 @@ export class HomeComponent implements OnInit {
       users: this.userService.getUsers(),
       categories: this.categoryService.getAll(),
       usersCustomer: this.userService.getUsersForCustomer(),
-    }).subscribe(({ inventory, orders, users, categories, usersCustomer }) => {
-      this.inventoryReportState.setInventoryReports(inventory.data);
-      this.orderReportState.setOrderReports(orders.data);
-      this.userSate.setUsers(users.data);
-      this.categoryState.setCategories(categories.data);
-      this.userForCustomerState.setUsersForCustomer(usersCustomer.data);
-      this.dataLoaded = true;
-    });
+      products: this.producService.getAll(),
+      customers: this.customervice.getAll(),
+    }).subscribe(
+      ({
+        inventory,
+        orders,
+        users,
+        categories,
+        usersCustomer,
+        products,
+        customers,
+      }) => {
+        this.inventoryReportState.setInventoryReports(inventory.data);
+        this.orderReportState.setOrderReports(orders.data);
+        this.userSate.setUsers(users.data);
+        this.categoryState.setCategories(categories.data);
+        this.userForCustomerState.setUsersForCustomer(usersCustomer.data);
+        this.productState.setProduct(products.data);
+        this.customerState.setCustomer(customers.data);
+        this.dataLoaded = true;
+      }
+    );
   }
 
   logout() {
@@ -77,6 +100,8 @@ export class HomeComponent implements OnInit {
     this.orderReportState.clearOrderReports();
     this.inventoryReportState.clearInventoryReports();
     this.userForCustomerState.clearUsersForCustomer();
+    this.productState.clearProduct();
+    this.customerState.clearCustomer();
     this.router.navigate(['/login']);
     this.toastrService.info('Logged out');
   }

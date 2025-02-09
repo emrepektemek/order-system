@@ -9,6 +9,8 @@ export class OrderReportModel {
 
   customerPhoneNumber: string = '';
 
+  quantity: number = 0;
+
   customerEmail: string = '';
 
   orderDate: Date = new Date();

@@ -13,8 +13,6 @@ import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../models/product';
 import { ProductState } from '../../store/product.state';
-import { Customer } from '../../models/customer';
-import { CustomerState } from '../../store/Customer.state';
 import { OrderService } from '../../services/order.service';
 
 @Component({
@@ -26,37 +24,39 @@ import { OrderService } from '../../services/order.service';
 export class UserOrderComponent implements OnInit {
   userId: number = 0;
   customerId: number = 0;
-  customerAddress: string = '';
+  customerAddress: string | null = '';
   selectedQuantity: number = 0;
   quantityOptions: number[] = Array.from({ length: 10 }, (_, i) => i + 1);
   orderForm: FormGroup;
   dataAdd: boolean = true;
 
   products: Product[] = [];
-  customers: Customer[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private toastrService: ToastrService,
     private productState: ProductState,
-    private customerState: CustomerState,
     private orderService: OrderService
   ) {}
   ngOnInit(): void {
     this.createOrderForm();
     let userId = localStorage.getItem('userId');
 
-    this.userId = Number(userId);
+    let customerId = localStorage.getItem('customerId');
+
+    this.customerAddress = localStorage.getItem('customerAddress');
+
+    if (userId != null) {
+      this.userId = Number(userId);
+    }
+
+    if (customerId != null) {
+      this.customerId = Number(customerId);
+    }
 
     this.productState.products$.subscribe((product) => {
       this.products = product;
     });
-
-    this.customerState.customers$.subscribe((customer) => {
-      this.customers = customer;
-    });
-
-    this.setCustomer();
   }
 
   createOrderForm() {
@@ -64,17 +64,6 @@ export class UserOrderComponent implements OnInit {
       customerId: [0, [Validators.required]],
       productId: [0, [Validators.required]],
     });
-  }
-
-  setCustomer() {
-    const selectedCustomer = this.customers.find(
-      (customer) => customer.userId === this.userId
-    );
-
-    if (selectedCustomer) {
-      this.customerId = selectedCustomer.id;
-      this.customerAddress = selectedCustomer.address;
-    }
   }
 
   selectQuantity(quantity: number) {
@@ -89,9 +78,15 @@ export class UserOrderComponent implements OnInit {
       createdUserId: this.userId,
     });
 
-    if (this.customerId == 0) {
+    if (this.customerId == null) {
       this.toastrService.error(
         'Please contact customer representative. You are not currently defined as a customer'
+      );
+    }
+
+    if (this.userId == null) {
+      this.toastrService.error(
+        'Please contact customer representative. Your userId not found'
       );
     }
 

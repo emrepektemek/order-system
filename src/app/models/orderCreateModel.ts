@@ -1,6 +1,4 @@
-import { AuditBaseEntity } from './auditBaseEntity';
-
-export class Order extends AuditBaseEntity {
+export class OrderCreateModel {
   customerId: number = 0;
   productId: number = 0;
   shippingAddress: string = '';

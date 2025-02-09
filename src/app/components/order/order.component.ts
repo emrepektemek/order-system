@@ -25,8 +25,6 @@ export class OrderComponent implements OnInit {
       this.orderReports = reports;
       this.dataLoaded = true;
     });
-
-    console.log(this.orderReports);
   }
 
   get filteredOrders(): OrderReportModel[] {

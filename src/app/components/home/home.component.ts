@@ -28,7 +28,8 @@ import { ProductService } from '../../services/product.service';
 import { ProductState } from '../../store/product.state';
 
 import { CustomerService } from '../../services/customer.service';
-import { CustomerState } from '../../store/Customer.state';
+import { CustomerState } from '../../store/customer-state';
+import { UserOrderState } from '../../store/user-order.state';
 
 @Component({
   selector: 'app-home',
@@ -48,6 +49,7 @@ export class HomeComponent implements OnInit {
     private inventoryReportState: InventoryReportState,
     private orderService: OrderService,
     private orderReportState: OrderReportState,
+    private UserOrderState: UserOrderState,
     private userService: UserService,
     private userSate: UserState,
     private categoryService: CategoryService,
@@ -56,7 +58,8 @@ export class HomeComponent implements OnInit {
     private producService: ProductService,
     private productState: ProductState,
     private customervice: CustomerService,
-    private customerState: CustomerState
+    private customerState: CustomerState,
+    private userOrderState: UserOrderState
   ) {}
 
   ngOnInit(): void {
@@ -90,6 +93,22 @@ export class HomeComponent implements OnInit {
         this.productState.setProduct(products.data);
         this.customerState.setCustomer(customers.data);
         this.dataLoaded = true;
+        this.customerState.setCustomerId().subscribe(
+          (customerId) => {
+            if (customerId != null) {
+              this.orderService
+                .getUserOrderReports(customerId)
+                .subscribe((userOrderReports) => {
+                  this.userOrderState.setUserOrder(userOrderReports.data);
+                });
+            } else {
+              console.log('Users Orders cannot get');
+            }
+          },
+          (error) => {
+            console.error('CustomerId cannot get');
+          }
+        );
       }
     );
   }
@@ -102,6 +121,7 @@ export class HomeComponent implements OnInit {
     this.userForCustomerState.clearUsersForCustomer();
     this.productState.clearProduct();
     this.customerState.clearCustomer();
+    this.userOrderState.clearUserOrder();
     this.router.navigate(['/login']);
     this.toastrService.info('Logged out');
   }

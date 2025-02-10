@@ -32,6 +32,7 @@
           <td>
             <i *ngIf="userOrderReport.isApproved === true" class="fa-solid fa-circle custom-icon-success fa-sm"></i>
             <i *ngIf="userOrderReport.isApproved === false" class="fa-solid fa-circle custom-icon-danger  fa-sm"></i>
+            <i *ngIf="userOrderReport.isApproved === null" class="fa-regular fa-circle custom-icon-circle fa-sm"></i>
          </td>
         </tr>
       </tbody>

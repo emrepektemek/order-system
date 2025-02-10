@@ -81,6 +81,11 @@ th:nth-child(4), td:nth-child(4),th:nth-child(5), td:nth-child(5),th:nth-child(6
   font-size: 9px;
 }
 
+.custom-icon-circle {
+  color: black;
+  font-size: 9px;
+}
+
 .custom-icon-success,
 .custom-icon-danger,
 .custom-icon-check,

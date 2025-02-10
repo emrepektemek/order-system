@@ -6,6 +6,9 @@ import { OrderReportModel } from '../models/orderReportModel';
 import { OrderCreateModel } from '../models/orderCreateModel';
 import { ResponseModel } from '../models/responseModel';
 import { UserOrderReportModel } from '../models/userOrderReportModel';
+import { OrderApproveModel } from '../models/orderApproveModel';
+import { ResponseSingleDataModel } from '../models/responseSingleDataModel';
+import { OrderApproveRejectModel } from '../models/orderApproveUpdateModel';
 
 @Injectable({
   providedIn: 'root',
@@ -30,5 +33,17 @@ export class OrderService {
     return this.httpClient.get<ResponseListDataModel<UserOrderReportModel>>(
       this.apiUrl + 'getuserreports?customerId=' + customerId
     );
+  }
+
+  getOrderApproves(): Observable<ResponseListDataModel<OrderApproveModel>> {
+    return this.httpClient.get<ResponseListDataModel<OrderApproveModel>>(
+      this.apiUrl + 'getapproves'
+    );
+  }
+
+  approveReject(orderApproveUpdateModel: OrderApproveRejectModel) {
+    return this.httpClient.post<
+      ResponseSingleDataModel<OrderApproveRejectModel>
+    >(this.apiUrl + 'reject', orderApproveUpdateModel);
   }
 }

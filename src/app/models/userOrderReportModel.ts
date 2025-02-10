@@ -11,5 +11,5 @@ export class UserOrderReportModel extends AuditBaseEntity {
 
   shipDate: Date = new Date();
 
-  isApproved: boolean = true;
+  isApproved: boolean | null = true;
 }

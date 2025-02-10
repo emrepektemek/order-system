@@ -29,7 +29,10 @@ import { ProductState } from '../../store/product.state';
 
 import { CustomerService } from '../../services/customer.service';
 import { CustomerState } from '../../store/customer-state';
+
 import { UserOrderState } from '../../store/user-order.state';
+
+import { OrderApproveState } from '../../store/order-approve.state';
 
 @Component({
   selector: 'app-home',
@@ -49,7 +52,6 @@ export class HomeComponent implements OnInit {
     private inventoryReportState: InventoryReportState,
     private orderService: OrderService,
     private orderReportState: OrderReportState,
-    private UserOrderState: UserOrderState,
     private userService: UserService,
     private userSate: UserState,
     private categoryService: CategoryService,
@@ -59,7 +61,8 @@ export class HomeComponent implements OnInit {
     private productState: ProductState,
     private customervice: CustomerService,
     private customerState: CustomerState,
-    private userOrderState: UserOrderState
+    private userOrderState: UserOrderState,
+    private orderApproveState: OrderApproveState
   ) {}
 
   ngOnInit(): void {
@@ -75,6 +78,7 @@ export class HomeComponent implements OnInit {
       usersCustomer: this.userService.getUsersForCustomer(),
       products: this.producService.getAll(),
       customers: this.customervice.getAll(),
+      orderApproveS: this.orderService.getOrderApproves(),
     }).subscribe(
       ({
         inventory,
@@ -84,6 +88,7 @@ export class HomeComponent implements OnInit {
         usersCustomer,
         products,
         customers,
+        orderApproveS,
       }) => {
         this.inventoryReportState.setInventoryReports(inventory.data);
         this.orderReportState.setOrderReports(orders.data);
@@ -92,6 +97,7 @@ export class HomeComponent implements OnInit {
         this.userForCustomerState.setUsersForCustomer(usersCustomer.data);
         this.productState.setProduct(products.data);
         this.customerState.setCustomer(customers.data);
+        this.orderApproveState.setOrderApproves(orderApproveS.data);
         this.dataLoaded = true;
         this.customerState.setCustomerId().subscribe(
           (customerId) => {
@@ -122,6 +128,7 @@ export class HomeComponent implements OnInit {
     this.productState.clearProduct();
     this.customerState.clearCustomer();
     this.userOrderState.clearUserOrder();
+    this.orderApproveState.clearOrderApproves();
     this.router.navigate(['/login']);
     this.toastrService.info('Logged out');
   }

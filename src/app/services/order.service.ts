@@ -8,7 +8,8 @@ import { ResponseModel } from '../models/responseModel';
 import { UserOrderReportModel } from '../models/userOrderReportModel';
 import { OrderApproveModel } from '../models/orderApproveModel';
 import { ResponseSingleDataModel } from '../models/responseSingleDataModel';
-import { OrderApproveRejectModel } from '../models/orderApproveUpdateModel';
+import { OrderApproveRejectModel } from '../models/orderApproveRejectModel';
+import { OrderApproveAcceptModel } from '../models/orderApproveAcceptModel';
 
 @Injectable({
   providedIn: 'root',
@@ -45,5 +46,11 @@ export class OrderService {
     return this.httpClient.post<
       ResponseSingleDataModel<OrderApproveRejectModel>
     >(this.apiUrl + 'reject', orderApproveUpdateModel);
+  }
+
+  approveAccept(orderApproveUpdateModel: OrderApproveAcceptModel) {
+    return this.httpClient.post<
+      ResponseSingleDataModel<OrderApproveAcceptModel>
+    >(this.apiUrl + 'accept', orderApproveUpdateModel);
   }
 }

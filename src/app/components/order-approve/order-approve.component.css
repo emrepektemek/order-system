@@ -54,10 +54,53 @@ th , td{
   max-width: 200px; 
 }
 
+.modal-body .form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.modal-body .form-select,
+.modal-body .form-control {
+  width: 100%;
+  margin-bottom: 30px; 
+  
+}
+
+.custom-form-container {
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  width: 100%;
+}
+
+
+.custom-input {
+  height: 44px; 
+  font-size: 15px; 
+  padding: 10px; 
+  width: 55% !important;
+}
+
+.custom-input:focus {
+  outline: none; 
+  box-shadow: 0 0 3px 2px rgb(123, 0, 232);
+  border-color: rgb(123, 0, 232);
+}
+
+
 .modal-content {
   padding-bottom: 20px; 
 }
 
+.modal-body {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 20px; 
+}
 
 .modal-footer {
   display: flex;
